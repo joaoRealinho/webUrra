@@ -1,0 +1,38 @@
+<div id="comunicados" class="mdl-grid">
+
+    <novo_comunicado_component class="mdl-card mdl-cell mdl-cell--3-col section--center mdl-shadow--2dp"></novo_comunicado_component>
+
+    <div *ngFor="let comunicado of comunicados" class="mdl-card mdl-cell mdl-cell--3-col section--center mdl-shadow--2dp">
+        <div class="mdl-card">
+            <div class="mdl-card__title mdl-card--border">
+                <h1 class="mdl-card__title-text ">{{comunicado.nome}}</h1>
+            </div>
+
+            <div class="mdl-card__media">
+                <img [src]="comunicado.imagem">
+            </div>
+
+            <div class="mdl-card__supporting-text">
+                <div>
+                    {{comunicado.descricao}}
+                </div>
+                <div>
+                    Contato: {{comunicado.contato}}
+                </div>
+            </div>
+
+            <div *ngIf="service.user != null" class="mdl-card__actions mdl-card--border">
+                <div class="mdc-card__action-icons">
+
+                    <material-button (click)="removerComunicado(comunicado)" title="Remover comunicado" raised>
+                        <i class="material-icons">delete</i>
+                    </material-button>
+
+                    <alterar_comunicado_component [alterarComunicado]="comunicado"></alterar_comunicado_component>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

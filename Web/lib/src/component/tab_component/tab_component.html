@@ -1,0 +1,27 @@
+<section>
+    <material-tab-strip (beforeTabChange)="onBeforeTabChange($event)"
+                        (tabChange)="onTabChange($event)"
+                        [tabLabels]="tabLabels">
+    </material-tab-strip>
+
+
+    <div [ngSwitch]="tabIndex">
+
+        <eventos_list *ngSwitchCase='0'></eventos_list>
+
+        <comunicados_list *ngSwitchCase='1' ></comunicados_list>
+
+        <novo_pontosInteresse_component *ngSwitchCase='2'></novo_pontosInteresse_component>
+        <pontosInteresse_list *ngSwitchCase='2'></pontosInteresse_list>
+
+        <nova_empresa_component *ngSwitchCase='3' ></nova_empresa_component>
+        <empresas_list *ngSwitchCase='3' ></empresas_list>
+
+        <mensagens_list *ngSwitchCase='4' ></mensagens_list>
+        <mensagensLidas_list *ngSwitchCase='4'> </mensagensLidas_list>
+
+        <!--<empresas_list *ngSwitchDefault></empresas_list>-->
+    </div>
+
+
+</section>

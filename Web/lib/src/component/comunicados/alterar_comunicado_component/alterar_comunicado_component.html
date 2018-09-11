@@ -1,0 +1,51 @@
+<!--Modificar Comunicado-->
+<material-button *ngIf="service.user != null" (trigger)="showBasicDialog = true"
+                 [disabled]="showBasicDialog"
+                 title="Modificar Comunicado"
+                 raised>
+    <i class="material-icons">edit</i>
+</material-button>
+
+<modal *ngIf="service.user != null" [visible]="showBasicDialog">
+    <material-dialog class="basic-dialog">
+
+        <h1 header>Modificar Comunicado</h1>
+
+        <div>
+            <label for="nomeComunicado">Nome do Comunicado:</label>
+            <input type="text" id="nomeComunicado" placeholder="Nome da Comunicado" [(ngModel)]="alterarComunicado.nome">
+        </div>
+        <div>
+            <label for="descricaoComunicado">Descrição do Comunicado:</label>
+            <input type="text" id="descricaoComunicado" placeholder="Descrição do Comunicado" [(ngModel)]="alterarComunicado.descricao">
+        </div>
+        <div>
+            <label for="contatoComunicado">Contato do Comunicado:</label>
+            <input type="text" id="contatoComunicado" placeholder="Contato da Comunicado" [(ngModel)]="alterarComunicado.contato">
+        </div>
+
+        <div>
+            <label for="upload-image">Adicionar imagem</label><br>
+
+            <input type="file" id="upload-image" accept="image/*" *ngIf="alterarComunicado.imagem == null"
+                   (change)="uploadImage($event)" [disabled]="fileDisabled">
+
+            <div id="actual-image-container" *ngIf="alterarComunicado.imagem != null">
+                <img [src]="alterarComunicado.imagem" width="200" id="actual-image">
+                <div class="mdc-card__action-buttons">
+                    <a id="actual-image-remove" (click)="removeImage()" title="Remove imagem" >
+                        <i class="material-icons">delete</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div footer>
+            <material-button autoFocus clear-size (trigger)="showBasicDialog = false" (trigger)="modificarComunicado()">
+                Concluido
+            </material-button>
+        </div>
+
+    </material-dialog>
+</modal>

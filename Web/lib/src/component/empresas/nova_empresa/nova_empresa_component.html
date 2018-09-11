@@ -1,0 +1,62 @@
+    <!-- Basic Dialog -->
+    <material-button *ngIf="service.user != null" (trigger)="showBasicDialog = true"
+                     [disabled]="showBasicDialog"
+                     raised>
+        Adicionar Empresa
+    </material-button>
+
+    <modal *ngIf="service.user != null" [visible]="showBasicDialog">
+        <material-dialog class="basic-dialog">
+
+            <h1 header>Adicionar Empresa</h1>
+
+            <div>
+                <label for="nomeEmpresa">Nome da Empresa:</label>
+                <input type="text" id="nomeEmpresa" placeholder="Nome da Empresa" [(ngModel)]="empresa.nome">
+            </div>
+            <div>
+                <label for="descricaoEmpresa">Descrição da Empresa:</label>
+                <input type="text" id="descricaoEmpresa" placeholder="Descrição da Empresa" [(ngModel)]="empresa.descricao">
+            </div>
+            <div>
+                <label for="localEmpresa">Local da Empresa:</label>
+                <input type="text" id="localEmpresa" placeholder="Local da Empresa" [(ngModel)]="empresa.local">
+            </div>
+            <div>
+                <label for="horarioEmpresa">Horario da Empresa:</label>
+                <input type="text" id="horarioEmpresa" placeholder="Horario da Empresa" [(ngModel)]="empresa.horarioFun">
+            </div>
+            <div>
+                <label for="tipoEmpresa">Tipo de Empresa:</label>
+                <input type="text" id="tipoEmpresa" placeholder="Tipo da Empresa" [(ngModel)]="empresa.tipoEmpresa">
+            </div>
+            <div>
+                <label for="tipoEmpresa">Contato da Empresa:</label>
+                <input type="text" id="contatoEmpresa" placeholder="Contato da Empresa" [(ngModel)]="empresa.contato">
+            </div>
+
+            <div>
+                <label for="upload-image">Adicionar imagem</label><br>
+
+                <input type="file" id="upload-image" accept="image/*" *ngIf="empresa.imagem == null"
+                       (change)="uploadImage($event)" [disabled]="fileDisabled">
+
+                <div id="actual-image-container" *ngIf="empresa.imagem != null">
+                    <img [src]="empresa.imagem" width="200" id="actual-image">
+                    <div class="mdc-card__action-buttons">
+                        <a id="actual-image-remove" (click)="removeImage()" title="Remove imagem" >
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div footer>
+                <material-button autoFocus clear-size (trigger)="showBasicDialog = false" (trigger)="adicionarEmpresa()">
+                    Concluido
+                </material-button>
+            </div>
+
+        </material-dialog>
+    </modal>

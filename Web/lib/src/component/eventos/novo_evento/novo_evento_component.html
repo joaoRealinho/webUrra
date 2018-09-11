@@ -1,0 +1,161 @@
+<!--
+<material-button *ngIf="service.user != null" (trigger)="showBasicDialog = true"
+                 [disabled]="showBasicDialog"
+                 raised>
+
+    <div id="nova_empresa_button" class="mdl-grid">
+            <div class="mdl-card">
+                <div class="mdc-card__media&#45;&#45;16-9 mdc-card__media-content">
+                    <img [src]="service.plusUrl" alt="Adicionar Evento">
+                </div>
+            </div>
+    </div>
+
+</material-button>
+
+<modal *ngIf="service.user != null" [visible]="showBasicDialog">
+    <material-dialog class="basic-dialog">
+
+        <h1 header>Adicionar Evento</h1>
+
+        <div>
+            <label for="nomeEvento">Nome do Evento:</label>
+            <input type="text" id="nomeEvento" placeholder="Nome do Evento" [(ngModel)]="evento.nome">
+        </div>
+        <div>
+            <label for="descricaoEvento">Descrição do Evento:</label>
+            <input type="text" id="descricaoEvento" placeholder="Descrição do Evento" [(ngModel)]="evento.descricao">
+        </div>
+        <div>
+            <label for="localEvento">Local do Evento:</label>
+            <input type="text" id="localEvento" placeholder="Local do Evento" [(ngModel)]="evento.local">
+        </div>
+        <div>
+            <label for="organizadoresEvento">Organizadores do Evento:</label>
+            <input type="text" id="organizadoresEvento" placeholder="Organizadores do Evento" [(ngModel)]="evento.organizadores">
+        </div>
+        <div>
+            <label for="contatoEvento">Contato do Evento:</label>
+            <input type="text" id="contatoEvento" placeholder="Contato do Evento" [(ngModel)]="evento.contato">
+        </div>
+
+        <div>
+            <label for="upload-image">Adicionar imagem</label><br>
+
+            <input type="file" id="upload-image" accept="image/*" *ngIf="evento.imagem == null"
+                   (change)="uploadImage($event)" [disabled]="fileDisabled">
+
+            <div id="actual-image-container" *ngIf="evento.imagem != null">
+                <img [src]="evento.imagem" width="200" id="actual-image">
+                <div class="mdc-card__action-buttons">
+                    <a id="actual-image-remove" (click)="removeImage()" title="Remove imagem" >
+                        <i class="material-icons">delete</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div footer>
+            <material-button autoFocus clear-size (trigger)="showBasicDialog = false" (trigger)="adicionarEvento()">
+                Concluido
+            </material-button>
+        </div>
+
+    </material-dialog>
+</modal>
+-->
+
+
+
+
+
+<!-- Trigger the modal with a button
+<button type="button" *ngIf="service.user != null" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ModalNovoEvento">
+    <div id="nova_empresa_button">
+            <div class="mdc-card__media-content">
+
+            </div>
+    </div>
+</button>-->
+<!--
+<material-button *ngIf="service.user != null" (trigger)="showBasicDialog = true"
+                 [disabled]="showBasicDialog"
+                 raised>
+
+
+                <img [src]="service.plusUrl" alt="Adicionar Evento">
+
+</material-button>-->
+
+<button type="button--3-col" *ngIf="service.user != null" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ModalNovoEvento" style="background-color: white; alignment: bottom">
+    <img [src]="service.plusUrl" alt="Adicionar Evento">
+</button>
+
+
+<!-- Modal -->
+<div id="ModalNovoEvento" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Adicionar Comunicado</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="nomeEvento">Nome do Evento:</label>
+                    <input type="text" class="form-control" placeholder="Nome do Evento" id="nomeEvento" [(ngModel)]="evento.nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="organizadoresEvento">Organizadores do Evento:</label>
+                    <input type="text" class="form-control" placeholder="Organizadores do Evento" id="organizadoresEvento" [(ngModel)]="evento.organizadores">
+                </div>
+
+                <div class="form-group">
+                    <label for="localEvento">Local do Evento:</label>
+                    <input type="text" class="form-control" placeholder="Local do Evento" id="localEvento" [(ngModel)]="evento.local">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="descricaoEvento">Descrição do Evento:</label>
+                    <input type="text" class="form-control" placeholder="Descrição do Evento" id="descricaoEvento" [(ngModel)]="evento.descricao">
+                </div>
+
+                <div class="form-group">
+                    <label for="contatoEvento">Contato do Evento:</label>
+                    <input type="text" class="form-control" placeholder="Contato do Evento" id="contatoEvento" [(ngModel)]="evento.contato">
+                </div>
+
+
+                <div>
+                    <label for="upload-image">Adicionar imagem</label><br>
+
+                    <input type="file" id="upload-image" accept="image/*" *ngIf="evento.imagem == null"
+                           (change)="uploadImage($event)" [disabled]="fileDisabled">
+
+                    <div id="actual-image-container" *ngIf="evento.imagem != null">
+                        <img [src]="evento.imagem" width="200" id="actual-image">
+                        <div class="mdc-card__action-buttons">
+                            <a id="actual-image-remove" (click)="removeImage()" title="Remove imagem" >
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <material-button autoFocus clear-size (trigger)="showBasicDialog = false" (trigger)="adicionarEvento()" data-dismiss="modal">
+                    Concluido
+                </material-button>
+            </div>
+        </div>
+
+    </div>
+</div>

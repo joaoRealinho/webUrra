@@ -1,0 +1,14 @@
+.mdl-layout__header-row {
+    padding: 50px;
+    background-color: #009901;
+}
+
+.mdl-button{
+    background-color: white;
+    display: inline-block;
+}
+
+.btn{
+    background-color: white;
+    color: #009901;
+}

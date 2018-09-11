@@ -1,0 +1,8 @@
+.mdl-card__title {
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.mdl-card__title-text, .mdl-card__subtitle-text {
+    align-self: flex-start;
+    color: black;
+}

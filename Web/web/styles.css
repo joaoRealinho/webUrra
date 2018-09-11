@@ -1,0 +1,35 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Material+Icons);
+
+body {
+  background-color: #F2F2F2;
+}
+
+* {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+/*Tabs*/
+material-tab-strip div tab-button.active {
+  color: white !important;
+}
+material-tab-strip div tab-button {
+  color: white !important;
+}
+.tab-indicator {
+  background: white !important;
+}
+material-tab-strip{
+  background-color: #009901;
+}
+
+
+
+.modal-header{
+  color: black;
+  border-bottom: 1px solid #009901;
+}
+.modal-footer{
+  color: black;
+  border-top: 1px solid #009901;
+}

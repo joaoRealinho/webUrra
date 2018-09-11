@@ -1,0 +1,37 @@
+<div *ngIf="service.user == null" id="sem_mensagens">
+    <h1 align="center"> Por favor faça Login </h1>
+</div>
+
+<div *ngIf="service.user != null">
+    <h1> Mensagens por Ler </h1>
+</div>
+
+<div *ngIf="service.user != null" id="eventos" class="mdl-grid">
+    <div *ngFor="let mensagem of mensagensJunta"
+         class="mdl-card mdl-cell mdl-cell--3-col section--center mdl-shadow--2dp">
+        <div class="mdl-card">
+            <div class="mdl-card__title">
+                <div class="mdl-card__title-text">Assunto:{{mensagem.assunto}}</div>
+                <div class="mdl-card__subtitle-text"> Por: {{mensagem.user}}</div>
+            </div>
+
+            <div *ngIf="mensagem.imagem != null" class="mdc-card__media--16-9 mdc-card__media-content">
+                <img [src]="mensagem.imagem" width="173" height="157" border="0" alt=""
+                     style="padding:10px;">
+            </div>
+
+            <div class="mdl-card__supporting-text">
+                <div>
+                    {{mensagem.texto}}
+                </div>
+            </div>
+            <div *ngIf="service.user != null" class="mdl-card__actions">
+                <div class="mdc-card__action-icons">
+                    <material-button (click)="mudarMensagemParaLida(mensagem)" title="Remover evento" raised>
+                        <i class="material-icons">done</i>
+                    </material-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

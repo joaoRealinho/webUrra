@@ -1,0 +1,42 @@
+<header class="mdl-layout__header">
+
+    <div class="mdl-layout__header-row">
+        <img [src]="service.imageUrl" width="100" height="100">
+        <h1>Freguesia de Urra</h1>
+
+        <div class="mdl-layout-spacer"></div>
+
+        <nav class="mdl-navigation">
+            <ul>
+                <!--Se estiver logado-->
+                <li id="profile" *ngIf="service.user != null">
+                    <p>Bem Vindo
+                        <button type="submit" class="btn" (click)="service.signOut()">LogOut</button>
+                    </p>
+                </li>
+
+                <!--Se nao estiver logado-->
+                <li id="login" *ngIf="service.user == null">
+
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input type="email" class="form-control" id="email" [(ngModel)]="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd" [(ngModel)]="pass">
+                        </div>
+
+                        <button type="submit" class="btn" (click)="submitlogin()">LogIn</button>
+                    </form>
+
+
+                    <!--<input type="text" id="emailLogin" placeholder="Email" [(ngModel)]="email">
+                    <input type="password" id="passlLogin" placeholder="Password" [(ngModel)]="pass">
+                    <a class="mdl-button mdl-button&#45;&#45;raised" (click)="submitlogin()">Login</a>-->
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

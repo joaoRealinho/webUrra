@@ -1,0 +1,43 @@
+<div id="eventos" class="mdl-grid">
+
+    <novo_evento_component></novo_evento_component>
+
+    <div *ngFor="let evento of eventos" class="mdl-card mdl-cell mdl-cell--3-col section--center mdl-shadow--2dp">
+        <div class="mdl-card">
+            <div class="mdl-card__title mdl-card--border">
+                <h1 class="mdl-card__title-text">{{evento.nome}}</h1>
+                <h1 class="mdl-card__subtitle-text">{{evento.organizadores}}</h1>
+            </div>
+
+            <div class="mdc-card__media--16-9 mdc-card__media-content">
+                <img [src]="evento.imagem" width="173" height="157" border="0" alt=""
+                     style="padding:10px;">
+            </div>
+
+            <div class="mdl-card__supporting-text">
+                <div>
+                    {{evento.descricao}}
+                </div>
+                <div>
+                    Morada: {{evento.local}}
+                </div>
+                <div>
+                    Contato: {{evento.contato}}
+                </div>
+            </div>
+            <div *ngIf="service.user != null" class="mdl-card__actions mdl-card--border">
+                <div class="mdc-card__action-icons">
+
+                    <material-button (click)="removerEvento(evento)" title="Remover evento" raised>
+                        <i class="material-icons">delete</i>
+                    </material-button>
+
+                    <!--Pass values into the directive-->
+                    <alterar_evento_component [alterarEvento]="evento"></alterar_evento_component>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

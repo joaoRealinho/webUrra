@@ -1,0 +1,38 @@
+
+<div id="pontoInteresse" class="mdl-grid">
+    <div *ngFor="let pontoInter of pontosInteresse" class="mdl-card mdl-cell mdl-cell--3-col section--center mdl-shadow--2dp">
+        <div class="mdl-card">
+            <div class="mdl-card__title">
+                <h1 class="mdl-card__title-text">{{pontoInter.nome}}</h1>
+            </div>
+
+            <div class="mdc-card__media--16-9 mdc-card__media-content">
+                <img [src]="pontoInter.imagem" width="173" height="157" border="0" alt=""
+                     style="padding:10px;">
+            </div>
+            <div class="mdl-card__supporting-text">
+                <div>
+                    {{pontoInter.descricao}}
+                </div>
+                <div>
+                    Horario: {{pontoInter.horarioFun}}
+                </div>
+                <div>
+                    Morada: {{pontoInter.local}}
+                </div>
+            </div>
+            <div *ngIf="service.user != null" class="mdl-card__actions">
+                <div class="mdc-card__action-icons">
+
+                    <material-button (click)="removerPontoInter(pontoInter)" title="Remover Ponto Interesse" raised>
+                        <i class="material-icons">delete</i>
+                    </material-button>
+
+                    <alterar_pontoInteresse_component [alterarPontoInter]="pontoInter"></alterar_pontoInteresse_component>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,42 @@
+
+<div id="empresas" class="mdl-grid">
+    <div *ngFor="let empresa of empresas" class="mdl-card mdl-cell mdl-cell--3-col section--center mdl-shadow--2dp">
+        <div class="mdl-card">
+            <div class="mdl-card__title">
+                <h1 class="mdl-card__title-text">{{empresa.nome}}</h1>
+                <h1 class="mdl-card__subtitle-text">{{empresa.tipoEmpresa}}</h1>
+            </div>
+
+            <div class="mdc-card__media--16-9 mdc-card__media-content">
+                <img [src]="empresa.imagem" width="173" height="157" border="0" alt=""
+                     style="padding:10px;">
+            </div>
+            <div class="mdl-card__supporting-text">
+                <div>
+                    {{empresa.descricao}}
+                </div>
+                <div>
+                    Horario: {{empresa.horarioFun}}
+                </div>
+                <div>
+                    Morada: {{empresa.local}}
+                </div>
+                <div>
+                    Contato: {{empresa.contato}}
+                </div>
+            </div>
+            <div *ngIf="service.user != null" class="mdl-card__actions">
+                <div class="mdc-card__action-icons">
+
+                    <material-button (click)="removerEmpresa(empresa)" title="Remover Empresa" raised>
+                        <i class="material-icons">delete</i>
+                    </material-button>
+
+                    <alterar_empresa_component [alterarEmpresa]="empresa"></alterar_empresa_component>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

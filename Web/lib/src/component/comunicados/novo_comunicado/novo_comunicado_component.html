@@ -1,0 +1,112 @@
+<!--&lt;!&ndash; Basic Dialog &ndash;&gt;
+<material-button *ngIf="service.user != null" (trigger)="showBasicDialog = true"
+                 [disabled]="showBasicDialog"
+                 raised>
+    Adicionar Comunicado
+</material-button>
+
+<modal *ngIf="service.user != null" [visible]="showBasicDialog">
+    <material-dialog class="basic-dialog">
+
+        <h1 header>Adicionar Comunicado</h1>
+
+        <div class="form-group">
+            <label for="nomeComunicado">Nome do Comunicado:</label>
+            <input type="text" class="form-control" placeholder="Nome do Comunicado" id="nomeComunicado" [(ngModel)]="comunicado.nome">
+        </div>
+
+
+        <div>
+            <label for="descricaoComunicado">Descrição do Comunicado:</label>
+            <input type="text" id="descricaoComunicado" placeholder="Descrição do Comunicado" [(ngModel)]="comunicado.descricao">
+        </div>
+        <div>
+            <label for="contatoComunicado">Contato do Comunicado:</label>
+            <input type="text" id="contatoComunicado" placeholder="Contato do Comunicado" [(ngModel)]="comunicado.contato">
+        </div>
+
+        <div>
+            <label for="upload-image">Adicionar imagem</label><br>
+
+            <input type="file" id="upload-image" accept="image/*" *ngIf="comunicado.imagem == null"
+                   (change)="uploadImage($event)" [disabled]="fileDisabled">
+
+            <div id="actual-image-container" *ngIf="comunicado.imagem != null">
+                <img [src]="comunicado.imagem" width="200" id="actual-image">
+                <div class="mdc-card__action-buttons">
+                    <a id="actual-image-remove" (click)="removeImage()" title="Remove imagem" >
+                        <i class="material-icons">delete</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div footer>
+            <material-button autoFocus clear-size (trigger)="showBasicDialog = false" (trigger)="adicionarComunicado()">
+                Concluido
+            </material-button>
+        </div>
+
+    </material-dialog>
+</modal>-->
+
+
+<!-- Trigger the modal with a button -->
+<button type="button" *ngIf="service.user != null" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Adicionar Comunicado</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="nomeComunicado">Nome do Comunicado:</label>
+                    <input type="text" class="form-control" placeholder="Nome do Comunicado" id="nomeComunicado" [(ngModel)]="comunicado.nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="descricaoComunicado">Descrição do Comunicado:</label>
+                    <input type="text" class="form-control" placeholder="Descrição do Comunicado" id="descricaoComunicado" [(ngModel)]="comunicado.descricao">
+                </div>
+
+                <div class="form-group">
+                    <label for="contatoComunicado">Contato do Comunicado:</label>
+                    <input type="text" class="form-control" placeholder="Contato do Comunicado" id="contatoComunicado" [(ngModel)]="comunicado.contato">
+                </div>
+
+
+                <div>
+                    <label for="upload-image">Adicionar imagem</label><br>
+
+                    <input type="file" id="upload-image" accept="image/*" *ngIf="comunicado.imagem == null"
+                           (change)="uploadImage($event)" [disabled]="fileDisabled">
+
+                    <div id="actual-image-container" *ngIf="comunicado.imagem != null">
+                        <img [src]="comunicado.imagem" width="200" id="actual-image">
+                        <div class="mdc-card__action-buttons">
+                            <a id="actual-image-remove" (click)="removeImage()" title="Remove imagem" >
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <material-button autoFocus clear-size (trigger)="showBasicDialog = false" (trigger)="adicionarComunicado()" data-dismiss="modal">
+                    Concluido
+                </material-button>
+            </div>
+        </div>
+
+    </div>
+</div>

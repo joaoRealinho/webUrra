@@ -1,0 +1,43 @@
+img{
+    max-width: 300px;
+    height: 300px;
+}
+
+.mdl-card {
+    max-width: 300px;
+    height: auto;
+    border-radius: 7px;
+}
+
+.mdl-card__supporting-text{
+    font-size: medium;
+    color: black;
+    height: 50px;
+}
+
+.mdl-card .mdl-card--border{
+    /* size: 5px;*/
+    border-color: #32AD33;
+}
+
+.mdl-card__media{
+    background-color: white;
+}
+
+.mdc-card__action-icons{
+    display: flex;
+    box-sizing: border-box;
+    align-items: right;
+}
+
+
+/*Fica com o subtitile por baixo*/
+.mdl-card__title {
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.mdl-card__title-text, .mdl-card__subtitle-text {
+    color: black;
+    align-self: flex-start;
+}
+

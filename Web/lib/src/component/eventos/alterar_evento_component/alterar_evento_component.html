@@ -1,0 +1,59 @@
+<!--Modificar Empresa-->
+<material-button *ngIf="service.user != null" (trigger)="showBasicDialog = true"
+                 [disabled]="showBasicDialog"
+                 title="Modificar Evento"
+                 raised>
+    <i class="material-icons">edit</i>
+</material-button>
+
+<modal *ngIf="service.user != null" [visible]="showBasicDialog">
+    <material-dialog class="basic-dialog">
+
+        <h1 header>Adicionar Evento</h1>
+
+        <div>
+            <label for="nomeEvento">Nome do Evento:</label>
+            <input type="text" id="nomeEvento" placeholder="Nome do Evento" [(ngModel)]="alterarEvento.nome">
+        </div>
+        <div>
+            <label for="descricaoEvento">Descrição do Evento:</label>
+            <input type="text" id="descricaoEvento" placeholder="Descrição do Evento" [(ngModel)]="alterarEvento.descricao">
+        </div>
+        <div>
+            <label for="localEvento">Local do Evento:</label>
+            <input type="text" id="localEvento" placeholder="Local do Evento" [(ngModel)]="alterarEvento.local">
+        </div>
+        <div>
+            <label for="organizadoresEvento">Organizadorefdss do Evento:</label>
+            <input type="text" id="organizadoresEvento" placeholder="Organizadores do Evento" [(ngModel)]="alterarEvento.organizadores">
+        </div>
+        <div>
+            <label for="contatoEvento">Contato do Evento:</label>
+            <input type="text" id="contatoEvento" placeholder="Contato do Evento" [(ngModel)]="alterarEvento.contato">
+        </div>
+
+        <div>
+            <label for="upload-image">Adicionar imagem</label><br>
+
+            <input type="file" id="upload-image" accept="image/*" *ngIf="alterarEvento.imagem == null"
+                   (change)="uploadImage($event)" [disabled]="fileDisabled">
+
+            <div id="actual-image-container" *ngIf="alterarEvento.imagem != null">
+                <img [src]="alterarEvento.imagem" width="200" id="actual-image">
+                <div class="mdc-card__action-buttons">
+                    <a id="actual-image-remove" (click)="removeImage()" title="Remove imagem" >
+                        <i class="material-icons">delete</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div footer>
+            <material-button autoFocus clear-size (trigger)="showBasicDialog = false" (trigger)="modificarEvento()">
+                Concluido
+            </material-button>
+        </div>
+
+    </material-dialog>
+</modal>

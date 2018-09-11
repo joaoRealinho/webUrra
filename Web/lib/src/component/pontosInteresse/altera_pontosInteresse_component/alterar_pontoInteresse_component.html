@@ -1,0 +1,59 @@
+<!--Modificar Empresa-->
+<material-button *ngIf="service.user != null" (trigger)="showBasicDialog = true"
+                 [disabled]="showBasicDialog"
+                 title="Modificar Ponto de Interesse"
+                 raised>
+    <i class="material-icons">edit</i>
+</material-button>
+
+<modal *ngIf="service.user != null" [visible]="showBasicDialog">
+    <material-dialog class="basic-dialog">
+
+        <h1 header>Modificar Ponto de Interesse</h1>
+
+        <div>
+            <label for="nomePontoInter">Nome do Ponto de Interesse:</label>
+            <input type="text" id="nomePontoInter" placeholder="Nome do Ponto de Interesse" [(ngModel)]="alterarPontoInter.nome">
+        </div>
+        <div>
+            <label for="descricaoPontoInter">Descrição do Ponto de Interesse:</label>
+            <input type="text" id="descricaoPontoInter" placeholder="Descrição do Ponto de Interesse" [(ngModel)]="alterarPontoInter.descricao">
+        </div>
+        <div>
+            <label for="localPontoInter">Local do Ponto de Interesse:</label>
+            <input type="text" id="localPontoInter" placeholder="Local do Ponto de Interesse" [(ngModel)]="alterarPontoInter.local">
+        </div>
+        <div>
+            <label for="horarioPontoInter">Horario do Ponto de Interesse:</label>
+            <input type="text" id="horarioPontoInter" placeholder="Horario do Ponto de Interesse" [(ngModel)]="alterarPontoInter.horarioFun">
+        </div>
+        <div>
+            <label for="contatoPontoInter">Contato do Ponto de Interesse:</label>
+            <input type="text" id="contatoPontoInter" placeholder="Contato do Ponto de Interesse" [(ngModel)]="alterarPontoInter.contato">
+        </div>
+
+        <div>
+            <label for="upload-image">Adicionar imagem</label><br>
+
+            <input type="file" id="upload-image" accept="image/*" *ngIf="alterarPontoInter.imagem == null"
+                   (change)="uploadImage($event)" [disabled]="fileDisabled">
+
+            <div id="actual-image-container" *ngIf="alterarPontoInter.imagem != null">
+                <img [src]="alterarPontoInter.imagem" width="200" id="actual-image">
+                <div class="mdc-card__action-buttons">
+                    <a id="actual-image-remove" (click)="removeImage()" title="Remove imagem" >
+                        <i class="material-icons">delete</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div footer>
+            <material-button autoFocus clear-size (trigger)="showBasicDialog = false" (trigger)="modificarPontoInteresse()">
+                Concluido
+            </material-button>
+        </div>
+
+    </material-dialog>
+</modal>

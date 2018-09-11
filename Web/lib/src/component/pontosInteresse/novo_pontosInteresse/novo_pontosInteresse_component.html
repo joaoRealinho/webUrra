@@ -1,0 +1,58 @@
+<!-- Basic Dialog -->
+<material-button *ngIf="service.user != null" (trigger)="showBasicDialog = true"
+                 [disabled]="showBasicDialog"
+                 raised>
+    Adicionar Ponto de Interesse
+</material-button>
+
+<modal *ngIf="service.user != null" [visible]="showBasicDialog">
+    <material-dialog class="basic-dialog">
+
+        <h1 header>Adicionar Ponto de Interesse</h1>
+
+        <div>
+            <label for="nomePontoInter">Nome do Ponto de Interesse:</label>
+            <input type="text" id="nomePontoInter" placeholder="Nome do Ponto de Interesse" [(ngModel)]="pontoInter.nome">
+        </div>
+        <div>
+            <label for="descricaoPontoInter">Descrição do Ponto de Interesse:</label>
+            <input type="text" id="descricaoPontoInter" placeholder="Descrição do Ponto de Interesse" [(ngModel)]="pontoInter.descricao">
+        </div>
+        <div>
+            <label for="localPontoInter">Local da Ponto de Interesse:</label>
+            <input type="text" id="localPontoInter" placeholder="Local do Ponto de Interesse" [(ngModel)]="pontoInter.local">
+        </div>
+        <div>
+            <label for="horarioPontoInter">Horario do Ponto de Interesse:</label>
+            <input type="text" id="horarioPontoInter" placeholder="Horario do Ponto de Interesse" [(ngModel)]="pontoInter.horarioFun">
+        </div>
+        <div>
+            <label for="contatoPontoInter">Contato do Ponto de Interesse:</label>
+            <input type="text" id="contatoPontoInter" placeholder="Contato do Ponto de Interesse" [(ngModel)]="pontoInter.contato">
+        </div>
+
+        <div>
+            <label for="upload-image">Adicionar imagem</label><br>
+
+            <input type="file" id="upload-image" accept="image/*" *ngIf="pontoInter.imagem == null"
+                   (change)="uploadImage($event)" [disabled]="fileDisabled">
+
+            <div id="actual-image-container" *ngIf="pontoInter.imagem != null">
+                <img [src]="pontoInter.imagem" width="200" id="actual-image">
+                <div class="mdc-card__action-buttons">
+                    <a id="actual-image-remove" (click)="removeImage()" title="Remove imagem" >
+                        <i class="material-icons">delete</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div footer>
+            <material-button autoFocus clear-size (trigger)="showBasicDialog = false" (trigger)="adicionarPontoInteresse()">
+                Concluido
+            </material-button>
+        </div>
+
+    </material-dialog>
+</modal>
